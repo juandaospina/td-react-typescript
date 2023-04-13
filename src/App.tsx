@@ -30,11 +30,23 @@ export const App = (): JSX.Element => {
     setTodos(todosListNew);
   };
 
+  // This function control the complete or uncomplete todo
+  const onCompletedHandler = (id: number, completed: boolean): void => {
+    const todosListNew = todos.map((todo) =>
+      todo.id === id ? { ...todo, completed } : { ...todo }
+    );
+    setTodos(todosListNew);
+  };
+
   return (
     <React.Fragment>
       <span>Hola mundo</span>
       <div className="todoapp">
-        <Todos todos={todos} onTodoRemove={onDeleteHandler}/>
+        <Todos
+          todos={todos}
+          onTodoRemove={onDeleteHandler}
+          onTodoComplete={onCompletedHandler}
+        />
       </div>
     </React.Fragment>
   );
