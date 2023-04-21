@@ -12,7 +12,6 @@ export const Filters: React.FC<Props> = ({ filterSeleted, onFilterChange }) => {
   return (
     <ul className="filters">
       {Object.entries(FILTERS_BUTTONS).map(([key, { literal, href }]) => {
-        console.log("[filters_components]", { key })
         const isSelected = key === filterSeleted;
         const className = isSelected ? "selected" : "";
         return (
