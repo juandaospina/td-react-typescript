@@ -5,8 +5,8 @@ import { Todo } from "../Todo";
 
 interface Props {
   todos: ListOfTodos;
-  onTodoRemove: (id: number) => void;
-  onTodoComplete: (id: number, completed: boolean) => void;
+  onTodoRemove: (id: string) => void;
+  onTodoComplete: (id: string, completed: boolean) => void;
 }
 
 export const Todos: React.FC<Props> = ({ todos, onTodoRemove, onTodoComplete }) => {

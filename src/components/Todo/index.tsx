@@ -2,8 +2,8 @@ import React from "react";
 import { type Todo as TodoType } from "../../types";
 
 interface Props extends TodoType {
-  onTodoRemove: (id: number) => void;
-  onTodoComplete: (id: number, completed: boolean) => void;
+  onTodoRemove: (id: string) => void;
+  onTodoComplete: (id: string, completed: boolean) => void;
 }
 
 export const Todo: React.FC<Props> = ({
@@ -14,9 +14,8 @@ export const Todo: React.FC<Props> = ({
   onTodoComplete,
 }) => {
   const onToggleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { checked } = event.target;
-    console.log("[checked_todo]", event.target.checked);
-    onTodoComplete(id, checked)
+    const { checked } = event.target; // Receives the event check from the input
+    onTodoComplete(id, checked);
   };
 
   return (
@@ -25,9 +24,6 @@ export const Todo: React.FC<Props> = ({
         className="toggle"
         checked={completed}
         type="checkbox"
-        // onChange={(event) =>
-        //   onTodoComplete(id, (completed = event.target.checked))
-        // }
         onChange={(event) => onToggleCheck(event)}
       />
       <label>{title}</label>
